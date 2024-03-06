@@ -20,5 +20,8 @@ from inHive import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('Hive/', views.Hive_list)
+    path('Hive/', views.Hive_list),
+    path('Task/', views.Task_list),
+    path('Members/', views.Membership_list)
 ]
+

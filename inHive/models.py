@@ -48,7 +48,7 @@ class Task(models.Model):
     taskTitle = models.CharField(max_length=100)
     taskDescription = models.TextField()
     taskStartDate = models.DateField()
-    taskEnDate = models.DateField()
+    taskEndDate = models.DateField()
     assignedTo = models.ForeignKey('User', on_delete=models.CASCADE)
 
     def __str__(self):
