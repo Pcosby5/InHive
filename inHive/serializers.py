@@ -1,5 +1,12 @@
 from rest_framework import serializers
-from .models import Hive, Task, Membership
+from .models import User, Hive, Task, Membership
+
+
+# Create UserSerializers to convert object into json
+# class UserSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = User
+#         fields = ['id', 'firstname', 'lastname', 'username', 'email', 'password']
 
 # Create HiveSerializers to convert object into json
 class HiveSerializer(serializers.ModelSerializer):

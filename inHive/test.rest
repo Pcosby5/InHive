@@ -1,0 +1,15 @@
+POST http://127.0.0.1:8000/UserLogin
+Content-Type: application/json
+{"firstname": "esther", "lastname": "ocheba", "username": "estherocheba","email": "eugenecosby133@gmail.com", "password": "pass1234"}
+
+###
+
+POST http://127.0.0.1:8000/UserSignUp
+Content-Type: application/json
+{"firstname": "esther", "lastname": "ocheba", "username": "estherocheba","email": "eugenecosby133@gmail.com", "password": "pass1234"}
+
+###
+
+GET http://127.0.0.1:8000/test_token
+Content-Type: application/json
+{"passed"}
