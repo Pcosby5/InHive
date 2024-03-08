@@ -23,6 +23,7 @@ urlpatterns = [
     path('Hive/', views.Hive_list),
     path('Task/', views.Task_list),
     path('Members/', views.Membership_list),
+    path('Users/', views.User_list),
     # re_path('userLogin/', views.UserLogin),
     # re_path('userSignUp/', views.UserSignUp),
 ]

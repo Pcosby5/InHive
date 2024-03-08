@@ -3,10 +3,10 @@ from .models import User, Hive, Task, Membership
 
 
 # Create UserSerializers to convert object into json
-# class UserSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = User
-#         fields = ['id', 'firstname', 'lastname', 'username', 'email', 'password']
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id','firstname', 'lastname', 'username', 'email', 'password']
 
 # Create HiveSerializers to convert object into json
 class HiveSerializer(serializers.ModelSerializer):
@@ -24,13 +24,14 @@ class TaskSerializer(serializers.ModelSerializer):
 
 # Create MembershipSerializers to convert object into json
 class MembershipSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Membership
         # got rid of user field because i have not authenticated it yet
         # plus i have not created a meta class for User model yet
         # gotta authorize users to perform admin
         # hence gotta serializeUser
-        fields = ['id', 'hive', 'role']
+        fields = ['id', 'User', 'hive', 'role']
 
 
 

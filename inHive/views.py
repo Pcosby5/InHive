@@ -1,11 +1,12 @@
 from django.http import JsonResponse
 from .models import Hive, Task
-from .serializers import  HiveSerializer, TaskSerializer, MembershipSerializer
+from .serializers import UserSerializer, HiveSerializer, TaskSerializer, MembershipSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 # from rest_framework.authtoken.models import Token
 from django.contrib.auth.models import User
+# from rest_framework import serializers
 
 
 
@@ -32,6 +33,16 @@ from django.contrib.auth.models import User
 #     return Response({})
 
 
+def User_list(request):
+    # get all the HiveObjects
+    UserObjects = User.objects.all()
+
+    # serialize the object
+    serializeObject = UserSerializer(UserObjects, many=True)
+    # return Json
+    return JsonResponse({'UserCreated': serializeObject.data})
+
+
 def Hive_list(request):
     # get all the HiveObjects
     HiveObjects = Hive.objects.all()
@@ -40,6 +51,7 @@ def Hive_list(request):
     serializeObject = HiveSerializer(HiveObjects, many=True)
     # return Json
     return JsonResponse({'hiveCreated': serializeObject.data})
+
 
 @api_view(['GET', 'POST'])
 def Task_list(request):
@@ -61,7 +73,9 @@ def Task_list(request):
             # return Json
             return Response(serializeObject.data, status=status.HTTP_201_CREATED)
 
+
 def Membership_list(request):
+    # user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all()) ignore
     # get all the HiveObjects
     TaskObjects = Task.objects.all()
 
