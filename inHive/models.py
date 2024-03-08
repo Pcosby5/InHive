@@ -1,9 +1,10 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create a model for User(member)
 class User(models.Model):
-    firstname = models.CharField(max_length=200)
-    lastname = models.CharField(max_length=200)
+    # firstname = models.CharField(max_length=200)
+    # lastname = models.CharField(max_length=200)
     username = models.CharField(max_length=200)
     email = models.CharField(max_length=200)
     password =  models.CharField(max_length=128)
@@ -36,6 +37,7 @@ class Hive(models.Model):
         ('Archived', 'Archived')
     ]
     status = models.CharField(max_length=20, choices=statusChoices)
+    HiveOwner = models.ForeignKey('User', on_delete=models.CASCADE, default=1)
 
     # queenBee = models.ForeignKey(QueenBee, on_delete=models.CASCADE)
 
@@ -51,6 +53,8 @@ class Task(models.Model):
     taskStartDate = models.DateField()
     taskEndDate = models.DateField()
     assignedTo = models.ForeignKey('User', on_delete=models.CASCADE)
+    hive = models.ForeignKey('Hive', on_delete=models.CASCADE)
+
 
 
     def __str__(self):
@@ -60,8 +64,8 @@ class Task(models.Model):
 # Create a model for Membership(members)
 class Membership(models.Model):
     id = models.AutoField(primary_key=True)
-    User = models.ForeignKey(User, on_delete=models.CASCADE)
-    hive = models.ForeignKey(Hive, on_delete=models.CASCADE)
+    User = models.ForeignKey('User', on_delete=models.CASCADE)
+    hive = models.ForeignKey('Hive', on_delete=models.CASCADE)
     roleChoices = [
         ('Member', 'Member'),
         ('QueenBee', 'QueenBee'),

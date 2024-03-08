@@ -20,8 +20,8 @@ from inHive import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('Hive/', views.Hive_list),
-    path('Task/', views.Task_list),
+    path('Hives/', views.Hive_list),
+    path('Tasks/', views.Task_list),
     path('Members/', views.Membership_list),
     path('Users/', views.User_list),
     # re_path('userLogin/', views.UserLogin),

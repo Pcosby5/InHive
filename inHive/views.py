@@ -1,5 +1,5 @@
 from django.http import JsonResponse
-from .models import Hive, Task
+from .models import User, Hive, Task, Membership
 from .serializers import UserSerializer, HiveSerializer, TaskSerializer, MembershipSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -77,10 +77,10 @@ def Task_list(request):
 def Membership_list(request):
     # user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all()) ignore
     # get all the HiveObjects
-    TaskObjects = Task.objects.all()
+    MembershipObjects = Membership.objects.all()
 
     # serialize the object
-    serializeObject = MembershipSerializer(TaskObjects, many=True)
+    serializeObject = MembershipSerializer(MembershipObjects, many=True)
     # return Json
     return JsonResponse({'members': serializeObject.data})
 

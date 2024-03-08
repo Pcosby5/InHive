@@ -6,20 +6,20 @@ from .models import User, Hive, Task, Membership
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id','firstname', 'lastname', 'username', 'email', 'password']
+        fields = ['id', 'username', 'email', 'password']
 
 # Create HiveSerializers to convert object into json
 class HiveSerializer(serializers.ModelSerializer):
     class Meta:
         model = Hive
-        fields = ['id', 'hiveTitle', 'hiveDescription', 'intendedUsers', 'hiveStartDate', 'hiveEndDate', 'status',]
+        fields = ['id', 'hiveTitle', 'hiveDescription', 'intendedUsers', 'hiveStartDate', 'hiveEndDate', 'status', 'HiveOwner']
 
 
 # Create TaskSerializers to convert object into json
 class TaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = Task
-        fields = ['id', 'taskTitle', 'taskDescription', 'taskStartDate', 'taskEndDate', 'assignedTo']
+        fields = ['id', 'taskTitle', 'taskDescription', 'taskStartDate', 'taskEndDate', 'assignedTo', 'hive']
 
 
 # Create MembershipSerializers to convert object into json
